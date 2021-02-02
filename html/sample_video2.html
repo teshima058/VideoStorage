@@ -1936,15 +1936,15 @@ h2 {
         startTimeText = document.getElementById("t_startTimeText");
         endTimeText = document.getElementById("t_endTimeText");
         currentTimeText = document.getElementById("t_currentTimeText");
-        instructionsElement = document.getElementById("instructionsImg");
-        instructionList = document.getElementById("instructionLst");
+        // instructionsElement = document.getElementById("instructionsImg");
+        // instructionList = document.getElementById("instructionLst");
         pageContainer = document.getElementById("pageContainer");
         mySliderBar = document.getElementById("sliderBar");
         label_minus = document.getElementById("labelMinus");
         label_plus = document.getElementById("labelPlus");
         label_title = document.getElementById("label_title");
 
-        instructionsElement.style.display = "none";
+        // instructionsElement.style.display = "none";
        
         setInterval(function() {displayVideoCurrentTime();}, 1/FPS);
         setInterval(function() {checkAndPauseSelectionPlay();}, 1/FPS);
@@ -1979,7 +1979,7 @@ h2 {
         //   "</video>"+
           "";
         
-        instructionList.innerHTML = compare_instructions
+        // instructionList.innerHTML = compare_instructions
         
         // Check keyboard input events
         document.onkeydown = KeyInputCheck;
@@ -2659,13 +2659,13 @@ h2 {
 
 <div id="pageContainer">
     <div id="instructions">
-        <input id="b_hideShowInstructions" class="hideShowInstructionsButton" value="Hide/Show Instructions" onclick="hideShowInstructions()" type="button">
+        <!-- <input id="b_hideShowInstructions" class="hideShowInstructionsButton" value="Hide/Show Instructions" onclick="hideShowInstructions()" type="button">
         </br>
         <div id="instructionsImg" >
           <h2>Task Instructions</h2> 
           <div id="instructionLst"></div> 
         </div>
-        <input id="b_hideShowInstructions" class="hideShowInstructionsButton" value="Hide/Show Instructions" onclick="hideShowInstructions()" type="button">
+        <input id="b_hideShowInstructions" class="hideShowInstructionsButton" value="Hide/Show Instructions" onclick="hideShowInstructions()" type="button"> -->
         </br>
         <div id="label-container" class="label-container">
             <label id="label_title" class="videoLabels">Description: </label>
