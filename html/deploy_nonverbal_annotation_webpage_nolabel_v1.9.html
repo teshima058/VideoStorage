@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!-- <script src="https://assets.crowd.aws/crowd-html-elements.js"></script> -->
 <html>
     
 <style type="text/css">
@@ -1971,7 +1971,7 @@ video::-webkit-media-controls {
         "<ul>"+
           "Note: Consistently submitting high-quality work grants you access to higher-paying HITs! <br>"+
           "If you have any questions or want more HITs, please email to <a href='mailto:hit.teshima@gmail.com'>hit.teshima@gmail.com</a> <br>"+
-          "FIRST-TIME TURKERS are encouraged to read our <a href='http://cs.cmu.edu/~dtroniak/hhm_instructions_interface.html' target='_blank'>interface how-to</a>"+
+          "FIRST-TIME TURKERS are encouraged to read our <a href='https://teshima058.github.io/VideoStorage/html/hhm_instructions_interface.html' target='_blank'>interface how-to</a>"+
           " and read the description of gesture types below" + 
           "</ul>"+
           "<h3>Goal: Split the gesture video by each gesture type</h3>"+
@@ -2523,6 +2523,10 @@ video::-webkit-media-controls {
     function annotateOrUpdate(divName, type) {
         if( annotEditMode == true ) {
             if( isValidTimeSelection() == true ) {
+                if (type == 'Imagistic'){
+                    words = window.prompt("What words do you think are represented as Imagistic gestures?\nPlease enter the words.");
+                    type = type + '(' + words + ')'
+                }
                 var annotEle = document.getElementById(editAnnotID);
                 
                 startVal = getBarValue(video_start_time+parseFloat(startTimeText.value),seek_bar.max);
@@ -2542,6 +2546,10 @@ video::-webkit-media-controls {
         }
         else {
             if( isValidTimeSelection() == true ) {
+                if (type == 'Imagistic'){
+                    words = window.prompt("What words do you think are represented as Imagistic gestures?\nPlease enter the words.");
+                    type = type + '(' + words + ')'
+                }
                 annotCnt = annotCnt + 1;
                 annotID = "annot" + annotCnt;
                 // var annotation_text = window.prompt("Which gesture type is the selected period of the video? \n (1: Beat, 2: Imagistic, 3: No-Gesture)\n Please enter a number from 1 to 3.","");
@@ -2702,7 +2710,11 @@ video::-webkit-media-controls {
 
     function checkRadioButton(type) {
         annotateOrUpdate('annotationListInnerArea', type);
-        for (i=1; i<4; i++) document.getElementById('b_radio') .elements["radio"+i].checked = false;
+        // for (i=1; i<4; i++) document.getElementById('b_radio').elements["radio"+i].checked = false;
+        // document.getElementById('b_radio1').elements["radio"+i].checked = false;
+        document.getElementById('b_radio1').checked = false;
+        document.getElementById('b_radio2').checked = false;
+        document.getElementById('b_radio3').checked = false;
     }
 
     function callCheckRadioButton(type){
@@ -2835,24 +2847,21 @@ video::-webkit-media-controls {
         </div>
 
         <div id="annotateButtonArea">
-            <form id="b_radio">
-                <div>
-                    <label>
-                        <input type="radio" name="radio1" value=1, onclick="callCheckRadioButton('Beat')"> Beat
-                    </label>
-                </div>
-                <div>
+            <div>
                 <label>
-                    <input type="radio" name="radio2" value=2, onclick="callCheckRadioButton('Imagistic')"> Imagistic
+                    <input type="radio" id="b_radio1" value=1, onclick="callCheckRadioButton('Beat')"> Beat
                 </label>
-                </div>
-                <div>
+            </div>
+            <div>
                 <label>
-                    <input type="radio" name="radio3" value=3, onclick="callCheckRadioButton('No-Gesture')"> No-Gesture
+                    <input type="radio" id="b_radio2" value=2, onclick="callCheckRadioButton('Imagistic')"> Imagistic
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" id="b_radio3" value=3, onclick="callCheckRadioButton('No-Gesture')"> No-Gesture
                 </label> 
-                </div>
-            </form>
-            <!-- <input id="b_annotate" value="Annotate" onclick="annotateOrUpdate('annotationListInnerArea')" type="button"> -->
+            </div>
             <input id="b_cancel" style="visibility:hidden" value="Cancel" onclick="exitUpdateMode()" type="button">
         </div>
     </div>
@@ -2868,7 +2877,7 @@ video::-webkit-media-controls {
         >> 1 sec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==>&nbsp;x<br/>
         Set Start Time ==> s<br/>
         Set End Time ==> e<br/>
-        Annotate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==> a<br/>
+        <!-- Annotate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==> a<br/> -->
         Submit&nbsp;==>&nbsp;shift-enter<br/>
         <!--Fullscreen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==>&nbsp;esc <br/>-->
     </div>
